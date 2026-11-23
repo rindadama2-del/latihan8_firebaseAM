@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Firebase Auth Simple',
       theme: ThemeData(
-        primarySwatch: Colors.indigoAccent,
+        primarySwatch: Colors.indigo,
       ),
       // Menggunakan StreamBuilder untuk mendeteksi status login
       home: const AuthWrapper(),
