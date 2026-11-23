@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Firebase Auth Simple',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.indigoAccent,
       ),
       // Menggunakan StreamBuilder untuk mendeteksi status login
       home: const AuthWrapper(),
@@ -180,7 +180,7 @@ class UserInfoScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Icon(Icons.account_circle, size: 100, color: Colors.blue),
+              const Icon(Icons.account_circle, size: 100, color: Colors.indigoAccent),
               const SizedBox(height: 24),
               const Text(
                 'Login Berhasil!',
@@ -206,7 +206,7 @@ class UserInfoScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'TErakhir login: ${user.metadata.lastSignInTime.toString()}',
+                        'Terakhir login: ${user.metadata.lastSignInTime.toString()}',
                       ),
                     ],
                   ),
