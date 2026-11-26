@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:tugas8_firebase/fcm_token_card.dart';
+import 'package:tugas8_firebase/notification_service.dart';
 import 'firebase_options.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';       // BARU
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,7 +15,12 @@ void main() async {
   );
   // await Firebase.initializeApp();
 
+  // Daftarkan handler untuk pesan saat aplikasi background / mati   // BARU
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+
   runApp(const MyApp());
+  // Inisialisasi notifikasi (izin, token, listener)                  // BARU
+  await NotificationService.init();
 }
 
 class MyApp extends StatelessWidget {
@@ -22,6 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Firebase Auth Simple',
+      navigatorKey: navigatorKey, // <-- BARU: agar bisa navigasi dari notifikasi
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
@@ -173,7 +182,7 @@ class UserInfoScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(
@@ -212,6 +221,8 @@ class UserInfoScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 16),     // <-- BARU
+              const FcmTokenCard(),           // <-- BARU
             ],
           ),
         ),
