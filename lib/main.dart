@@ -18,9 +18,10 @@ void main() async {
   // Daftarkan handler untuk pesan saat aplikasi background / mati   // BARU
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 
-  runApp(const MyApp());
   // Inisialisasi notifikasi (izin, token, listener)                  // BARU
   await NotificationService.init();
+  
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
